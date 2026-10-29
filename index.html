@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tata Group, explained</title>
+<style>
+:root{--bg:#f6f7f9;--card:#fff;--ink:#14213a;--mute:#5d6678;--line:#dde1e8;--tata:#1d4f9f;--pub:#e3e7ee;--hot:#b4540a;--hotbg:#fdf0e3;--sel:#e8effa;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1524;--card:#16203a;--ink:#e8ecf5;--mute:#9aa5bd;--line:#2a3654;--tata:#6ea0f0;--pub:#2a3654;--hot:#f0a35e;--hotbg:#3a2a1a;--sel:#1f2f55;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0e1524;--card:#16203a;--ink:#e8ecf5;--mute:#9aa5bd;--line:#2a3654;--tata:#6ea0f0;--pub:#2a3654;--hot:#f0a35e;--hotbg:#3a2a1a;--sel:#1f2f55;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:1040px;margin:0 auto;padding:0 18px 48px}
+header{padding:32px 0 8px}
+h1{font-size:clamp(28px,5vw,40px);line-height:1.15;margin:0 0 8px;letter-spacing:-.01em}
+h2{font-size:22px;margin:36px 0 6px}
+.sub{color:var(--mute);max-width:62ch;margin:0}
+.note{background:var(--hotbg);color:var(--ink);border-left:4px solid var(--hot);padding:10px 14px;border-radius:6px;font-size:14px;margin:18px 0}
+.chain{display:flex;flex-wrap:wrap;gap:8px;align-items:stretch;margin:18px 0}
+.step{flex:1 1 220px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.step b{display:block}.step span{font-size:14px;color:var(--mute)}
+.arrow{align-self:center;color:var(--mute)}
+.grid{display:grid;grid-template-columns:1fr 340px;gap:20px;align-items:start}
+@media(max-width:820px){.grid{grid-template-columns:1fr}}
+.sector{font-size:14px;color:var(--mute);margin:18px 0 6px;font-weight:600}
+.row{display:block;width:100%;text-align:left;background:var(--card);color:inherit;border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin-bottom:8px;cursor:pointer;font:inherit}
+.row:hover{border-color:var(--tata)}
+.row[aria-pressed="true"]{border-color:var(--tata);background:var(--sel);box-shadow:0 0 0 2px var(--tata) inset}
+.row.rel{outline:2px solid var(--hot);outline-offset:1px}
+.top{display:flex;justify-content:space-between;gap:10px;font-weight:600}
+.top em{font-style:normal;color:var(--tata)}
+.bar{height:10px;border-radius:5px;background:var(--pub);margin-top:8px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--tata);border-radius:5px}
+.legend{font-size:13px;color:var(--mute);display:flex;gap:16px;margin-top:4px}
+.legend s{display:inline-block;width:10px;height:10px;border-radius:3px;text-decoration:none;margin-right:5px;vertical-align:-1px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;position:sticky;top:12px}
+.panel h3{margin:0 0 2px;font-size:20px}
+.panel p{margin:8px 0}
+.panel .big{font-size:34px;font-weight:700;color:var(--tata);line-height:1}
+.empty{color:var(--mute)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.chip{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:20px;padding:6px 14px;font:inherit;font-size:14px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--tata);color:#fff;border-color:var(--tata)}
+:root[data-theme="dark"] .chip[aria-pressed="true"]{color:#0e1524}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .chip[aria-pressed="true"]{color:#0e1524}}
+.tl{list-style:none;margin:0;padding:0 0 0 18px;border-left:2px solid var(--line)}
+.ev{position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:0 0 12px;cursor:pointer}
+.ev::before{content:"";position:absolute;left:-26px;top:18px;width:12px;height:12px;border-radius:50%;background:var(--tata);border:2px solid var(--bg)}
+.ev.rel{border-color:var(--hot);background:var(--hotbg)}
+.ev h4{margin:2px 0 4px;font-size:16px}
+.meta{font-size:13px;color:var(--mute)}
+.tag{display:inline-block;font-size:12px;font-weight:600;padding:1px 8px;border-radius:10px;background:var(--sel);color:var(--tata);margin-left:6px}
+.why{font-size:14px;margin:8px 0 0;padding-top:8px;border-top:1px dashed var(--line)}
+.gloss{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.gloss div{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-size:14px}
+.gloss b{display:block;font-size:15px;margin-bottom:2px}
+footer{margin-top:36px;font-size:13px;color:var(--mute)}
+.dctl{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 6px}.dctl input,.dctl select{font:inherit;padding:8px 12px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink)}.dctl input{flex:1 1 260px}
+.dgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;margin-top:10px}
+.dc{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-size:14px}.dc h4{margin:0 0 2px;font-size:16px}.dc p{margin:6px 0 0}.dc .meta{font-size:13px}
+.bd{display:inline-block;font-size:12px;font-weight:600;padding:1px 8px;border-radius:10px;margin-top:4px}.bd.l{background:var(--sel);color:var(--tata)}.bd.u{background:var(--pub);color:var(--mute)}
+.hit{background:var(--hotbg);border-left:4px solid var(--hot);padding:8px 12px;border-radius:6px;font-size:14px;margin:8px 0}
+:focus-visible{outline:3px solid var(--hot);outline-offset:2px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<h1>Tata Group, explained</h1>
+<p class="sub">Before you buy a stock, see who owns the company, what deals shaped it, and what those deals mean in plain words. Tap a company or a deal to see how they connect.</p>
+<div class="note"><b>For learning only.</b> This is not investment advice and does not say whether to buy or sell any share. Holding figures come from Tata’s own table, which may be out of date, so check the latest exchange filings before you decide anything.</div>
+</header>
+
+<section aria-label="Ownership chain">
+<div class="chain">
+<div class="step"><b>Tata Trusts</b><span>Charitable trusts that own roughly two-thirds of Tata Sons.</span></div><div class="arrow" aria-hidden="true">›</div>
+<div class="step"><b>Tata Sons</b><span>The unlisted holding company. You can’t buy its shares on the stock market.</span></div><div class="arrow" aria-hidden="true">›</div>
+<div class="step"><b>Group companies</b><span>Tata says 26 are listed on the stock exchange. Many others, such as Air India and Croma, are unlisted. Search the full directory below.</span></div>
+</div>
+</section>
+
+<h2>Who holds what</h2>
+<p class="sub">The blue part of each bar is the share held by the Tata group. The grey part is held by everyone else, including public investors.</p>
+<div class="legend"><span><s style="background:var(--tata)"></s>Tata group</span><span><s style="background:var(--pub)"></s>Other shareholders</span></div>
+<div class="grid">
+<div id="list"></div>
+<aside class="panel" id="panel" aria-live="polite"></aside>
+</div>
+
+<h2>Company directory: Tata, Reliance, ITC and Hindustan Unilever</h2>
+<p class="sub">Search a name you know, like Tanishq, Jio, Dove or Aashirvaad, to find the company behind it. Companies are not all listed on the stock market, so each card says which are and which are not.</p>
+<div class="dctl"><input id="dq" type="search" placeholder="Try Tanishq, Zudio, Croma, BigBasket, Taj…" aria-label="Search Tata companies and brands"><select id="dgrp" aria-label="Group"></select><select id="dsec" aria-label="Sector"></select><select id="dlis" aria-label="Listing status"><option>All</option><option>Listed</option><option>Unlisted</option></select></div>
+<p class="meta">Price trends are past moves taken from INDmoney, not predictions. For comparison, the Nifty 50 fell about 8.9% in the year to 30 September 2026 (a different end date, so compare roughly). Companies with no figure have not been added yet. Past moves do not show what happens next.</p><div class="meta" id="dcount"></div><div id="dhit"></div><div class="dgrid" id="dir"></div>
+
+<h2>Deals that shaped these companies</h2>
+<p class="sub">Acquisitions, mergers, demergers and partnerships. Pick a group or a type. For Tata deals, tap a deal to highlight the companies it touched.</p>
+<div class="dctl"><select id="tgrp" aria-label="Group"></select></div><div class="chips" id="chips"></div>
+<ol class="tl" id="tl"></ol>
+
+<h2>Words you will see</h2>
+<div class="gloss">
+<div><b>Promoter or group holding</b>The share owned by the founding group. A high number means the group has strong control.</div>
+<div><b>Acquisition</b>One company buys another, often using cash or loans. Debt taken on can affect profits for years.</div>
+<div><b>Merger and demerger</b>A merger joins two companies. A demerger splits one into two, each with its own share price.</div>
+<div><b>Partnership or joint venture</b>Two companies share a business, costs and risk, without one buying the other.</div>
+</div>
+
+<footer>Prototype by a first-time builder. The company directory follows the list on Tata’s own investor page (tata.com/investors/companies), plus brands and joint ventures. Reliance, ITC and HUL entries and all brand lists come from general knowledge and INDmoney group pages, so verify them before publishing. Price trends are from INDmoney on the dates shown. Holding percentages are from an older Tata table that still lists Tata Global Beverages (now Tata Consumer Products) and a single Tata Motors. Deal summaries are simplified and should be checked against company announcements.</footer>
+</div>
+
+<script>
+var C=[
+{id:"tcs",n:"Tata Consultancy Services",s:"Technology",p:71.9,d:"IT services and consulting for large companies around the world."},
+{id:"tcom",n:"Tata Communications",s:"Technology",p:48.9,d:"Network, cloud and internet services for businesses."},
+{id:"elxsi",n:"Tata Elxsi",s:"Technology",p:44.6,d:"Design and technology services for carmakers, healthcare and media."},
+{id:"tmotors",n:"Tata Motors",s:"Automobiles",p:35.8,d:"Cars, SUVs and trucks, plus the Jaguar Land Rover luxury brands."},
+{id:"tsteel",n:"Tata Steel",s:"Metals and chemicals",p:33.2,d:"Makes steel in India and Europe."},
+{id:"tchem",n:"Tata Chemicals",s:"Metals and chemicals",p:30.8,d:"Soda ash, specialty chemicals and nutrition products."},
+{id:"tpower",n:"Tata Power",s:"Energy",p:33.0,d:"Generates and sells electricity, with a growing renewable business."},
+{id:"titan",n:"Titan Company",s:"Consumer and retail",p:25.0,d:"Watches, jewellery (Tanishq) and eyewear."},
+{id:"trent",n:"Trent",s:"Consumer and retail",p:32.6,d:"Fashion retail through stores such as Westside and Zudio."},
+{id:"tcp",n:"Tata Global Beverages (now Tata Consumer Products)",s:"Consumer and retail",p:34.5,d:"Tata Tea, Tetley, Tata Salt and other packaged foods."},
+{id:"voltas",n:"Voltas",s:"Consumer and retail",p:30.3,d:"Air conditioners and cooling products."},
+{id:"ihcl",n:"Indian Hotels Company",s:"Consumer and retail",p:39.1,d:"Runs Taj hotels and resorts."},
+{id:"tic",n:"Tata Investment Corporation",s:"Investments",p:73.0,d:"Invests in shares and other securities rather than selling products."}
+];
+var E=[
+{y:2000,t:"Acquisition",h:"Tata Tea buys Tetley",r:["tcp"],b:"Tata Tea bought the UK tea brand Tetley, giving the group a global tea name.",w:"One deal can set a company’s direction for decades. Tea is still a core part of this business."},
+{y:2007,t:"Acquisition",h:"Tata Steel buys Corus",r:["tsteel"],b:"Tata Steel bought the Anglo-Dutch steelmaker Corus in a deal worth around $12 billion.",w:"It made Tata Steel a much bigger global player, but it also took on a lot of debt, and the European business weighed on results for years."},
+{y:2008,t:"Acquisition",h:"Tata Motors buys Jaguar Land Rover",r:["tmotors"],b:"Tata Motors bought the Jaguar and Land Rover brands from Ford.",w:"Luxury cars became a large part of Tata Motors’ revenue, so the company is affected by car demand abroad, not just in India."},
+{y:2018,t:"Partnership",h:"Voltas teams up with Arçelik",r:["voltas"],b:"Voltas formed a joint venture with Turkey’s Arçelik to sell home appliances such as washing machines and fridges.",w:"A joint venture lets a company enter a new product area while sharing cost and risk with a partner."},
+{y:2020,t:"Merger",h:"Tata Global Beverages merges with Tata Chemicals’ consumer products arm",r:["tcp","tchem"],b:"The tea company combined with the salt and foods business of Tata Chemicals and was renamed Tata Consumer Products.",w:"Tata Consumer Products now covers tea, salt and food in one listed company, while Tata Chemicals focuses on chemicals."},
+{y:2024,t:"Merger",h:"Air India and Vistara combine",r:[],b:"Tata took over Air India in 2022. In 2024 it merged Vistara, a venture with Singapore Airlines, into Air India.",w:"Air India is not listed, so no Tata stock here directly holds this business. Big bets can be made by the unlisted parent, not only by listed companies."},
+{y:2025,t:"Demerger",h:"Tata Motors splits into two companies",r:["tmotors"],b:"Tata’s website now lists Tata Motors Passenger Vehicles (which includes Jaguar Land Rover) and Tata Motors Commercial Vehicles as separate listed companies.",w:"After a split, shareholders hold shares in both companies and each is priced on its own business. The holding table above is older and still shows one Tata Motors."},
+{y:2026,t:"Leadership",h:"Tata Sons chairman says he will not seek another term",r:["tcs","tmotors","tsteel","tpower","tcp","titan"],b:"On 12 August 2026, N Chandrasekaran said he will not seek reappointment when his term ends on 20 February 2027. Most Tata group stocks fell that day, and TCS dropped about 5 to 6% at one point.",w:"Tata Sons controls the group, so a change at the top can leave investors unsure about direction until a successor is named. It is a reason for the fall, not a forecast of what happens next."}
+,{y:2020,t:"Investment",g:"Reliance",h:"Facebook and Google buy stakes in Jio Platforms",r:[],b:"In 2020, Facebook (now Meta) paid about ₹43,574 crore for a 9.99% stake in Jio Platforms, and Google later bought around 7.7% for about ₹33,700 crore.",w:"Outside investors valued Jio’s digital business highly, and the money helped Reliance reduce its debt. Jio Platforms is not listed, so you can only hold it through Reliance Industries."},
+{y:2021,t:"Acquisition",g:"Reliance",h:"Reliance Retail takes control of Just Dial",r:[],b:"Reliance Retail bought a controlling stake in the local search company Just Dial.",w:"The deal tied Just Dial’s business listings to Reliance’s retail and digital plans. Just Dial stayed listed on the stock exchange."},
+{y:2022,t:"Acquisition",g:"Reliance",h:"Reliance buys the Campa Cola brand",r:[],b:"Reliance’s consumer arm bought the old Campa Cola brand and relaunched it in soft drinks.",w:"It shows Reliance moving from refining and telecom into everyday consumer products, where it competes with large beverage brands."},
+{y:2023,t:"Demerger",g:"Reliance",h:"Jio Financial Services splits from Reliance",r:[],b:"Reliance separated its financial services business into Jio Financial Services, which listed on the stock exchange in 2023.",w:"Reliance shareholders received shares in the new company. Each business is now priced on its own results."},
+{y:2024,t:"Merger",g:"Reliance",h:"Viacom18 and Star India combine",r:[],b:"Reliance’s media business merged with Disney’s Star India to form JioStar. Reliance controls the new company and Disney holds a minority stake.",w:"Combining the two removed a major rival and gave Reliance a large share of Indian TV and streaming."},
+{y:2020,t:"Acquisition",g:"ITC",h:"ITC buys Sunrise Foods",r:[],b:"ITC bought Sunrise Foods, a spices maker, to grow its packaged foods business.",w:"ITC earns most of its profit from cigarettes, so deals like this are part of its effort to grow in foods and personal care."},
+{y:2025,t:"Demerger",g:"ITC",h:"ITC Hotels separates and lists",r:[],b:"ITC moved its hotels business into ITC Hotels, which listed on the stock exchange in January 2025.",w:"ITC shareholders received shares in the new hotels company. Hotels have different costs and growth from cigarettes and foods, so each is now valued separately."},
+{y:2020,t:"Merger",g:"Hindustan Unilever",h:"HUL merges with GSK Consumer Healthcare India",r:[],b:"HUL took over GSK’s Indian consumer health business in an all-share deal, adding Horlicks and Boost.",w:"It made HUL a major player in health drinks. GSK’s shareholders received HUL shares, so the number of HUL shares grew."},
+{y:2025,t:"Acquisition",g:"Hindustan Unilever",h:"HUL buys Minimalist",r:[],b:"HUL bought a majority stake in Minimalist, an Indian skincare brand sold mostly online.",w:"It gives HUL a young, online-first brand as buyers move from older mass brands to newer ones."}
+];
+var N={tcs:"12 Aug 2026: fell about 5% after the Tata Sons chairman’s announcement, the biggest fall in the group that day.",tmotors:"12 Aug 2026: Tata Motors Passenger Vehicles fell about 2.5% after the same announcement.",tsteel:"12 Aug 2026: fell about 1.7% after the same announcement.",tpower:"12 Aug 2026: fell about 1.2% after the same announcement.",tcp:"12 Aug 2026: fell about 1.7% after the same announcement.",titan:"12 Aug 2026: traded lower after the same announcement."};
+var sel=null,flt="All",hot=[],tg="All";
+function $(i){return document.getElementById(i)}
+function by(id){return C.filter(function(c){return c.id===id})[0]}
+function insight(c){var o=(100-c.p).toFixed(1);
+if(c.p>=50)return "Tata group holds a majority, so it can steer major decisions. The other "+o+"% is held by outside investors.";
+return "Tata group holds a large stake but not a majority. The other "+o+"% is with outside investors, who also have a say in big decisions."}
+function renderList(){var h="",last="";
+C.forEach(function(c){
+if(c.s!==last){h+='<div class="sector">'+c.s+'</div>';last=c.s}
+h+='<button class="row'+(hot.indexOf(c.id)>-1?' rel':'')+'" data-id="'+c.id+'" aria-pressed="'+(sel===c.id)+'"><div class="top"><span>'+c.n+'</span><em>'+c.p+'%</em></div><div class="bar"><i style="width:'+c.p+'%"></i></div></button>'});
+$("list").innerHTML=h}
+function renderPanel(){var c=by(sel),p=$("panel");
+if(!c){p.innerHTML='<p class="empty">Tap a company to see what it does, how much Tata group owns, and which deals shaped it.</p>';return}
+var ev=E.filter(function(e){return e.r.indexOf(c.id)>-1});
+p.innerHTML='<h3>'+c.n+'</h3><div class="meta">'+c.s+'</div><p>'+c.d+'</p><div class="big">'+c.p+'%</div><div class="meta">held by Tata group</div><p>'+insight(c)+'</p>'+(N[c.id]?'<p><b>Latest move</b></p><p class="meta">'+N[c.id]+' News snapshot, not live prices, and not a prediction.</p>':'')+'<p><b>Related deals</b></p>'+(ev.length?ev.map(function(e){return '<p class="meta">'+e.y+': '+e.h+'</p>'}).join(""):'<p class="meta">No major deal listed in this prototype yet.</p>')}
+function renderChips(){var T=["All","Acquisition","Merger","Demerger","Partnership","Investment","Leadership"];
+$("chips").innerHTML=T.map(function(t){return '<button class="chip" data-t="'+t+'" aria-pressed="'+(flt===t)+'">'+t+'</button>'}).join("")}
+function renderTl(){
+var ord=E.map(function(e,i){return i}).sort(function(a,b){return E[a].y-E[b].y});
+$("tl").innerHTML=ord.map(function(i){var e=E[i];if(flt!=="All"&&e.t!==flt)return"";if(tg!=="All"&&(e.g||"Tata")!==tg)return"";
+var rel=sel&&e.r.indexOf(sel)>-1;
+return '<li><div class="ev'+(rel?' rel':'')+'" data-i="'+i+'" tabindex="0" role="button"><div class="meta">'+e.y+'<span class="tag">'+e.t+'</span><span class="tag">'+(e.g||"Tata")+'</span></div><h4>'+e.h+'</h4><div>'+e.b+'</div><div class="why"><b>Why it matters:</b> '+e.w+'</div></div></li>'}).join("")||'<li class="empty">No deals for this combination yet.</li>'}
+function all(){renderList();renderPanel();renderChips();renderTl()}
+$("list").addEventListener("click",function(x){var b=x.target.closest(".row");if(!b)return;sel=(sel===b.dataset.id)?null:b.dataset.id;hot=[];all()});
+$("chips").addEventListener("click",function(x){var b=x.target.closest(".chip");if(!b)return;flt=b.dataset.t;renderChips();renderTl()});
+function evPick(x){var b=x.target.closest(".ev");if(!b)return;if(x.type==="keydown"&&x.key!=="Enter"&&x.key!==" ")return;x.preventDefault();hot=E[+b.dataset.i].r.slice();renderList();if(hot.length)$("list").scrollIntoView({behavior:"smooth",block:"start"})}
+$("tl").addEventListener("click",evPick);$("tl").addEventListener("keydown",evPick);
+$("tgrp").innerHTML=["All","Tata","Reliance","ITC","Hindustan Unilever"].map(function(s){return "<option>"+s+"</option>"}).join("");
+$("tgrp").addEventListener("change",function(e){tg=e.target.value;renderTl()});
+var D=[
+["Tata Consultancy Services (TCS)","Technology",1,"IT, digital and business services for clients worldwide.","",""],
+["Tata Elxsi","Technology",1,"Design and technology services for product engineering.","",""],
+["Tata Technologies","Technology",1,"Product engineering and digital services.","",""],
+["Tata Digital","Technology",0,"Tata’s consumer internet business.","BigBasket, Tata Neu, Tata 1mg, Tata CLiQ",""],
+["Tata Electronics","Technology",0,"Electronics and semiconductor manufacturing.","",""],
+["Tata Steel","Steel",1,"Global steel maker with about 33 million tonnes a year of capacity.","",""],
+["Tata Motors Passenger Vehicles","Auto",1,"Cars, SUVs and electric vehicles. Owns Jaguar Land Rover.","Nexon, Punch, Harrier, Tata.ev",""],
+["Jaguar Land Rover","Auto",0,"Premium car maker based in the UK.","Jaguar, Range Rover, Defender, Discovery","Part of Tata Motors Passenger Vehicles"],
+["Tata Motors Commercial Vehicles","Auto",1,"India’s largest maker of trucks and buses.","",""],
+["Tata Autocomp Systems","Auto",0,"Auto components and engineering services.","",""],
+["Tata Consumer Products","Consumer and Retail",1,"Food and drinks business of the group.","Tata Tea, Tetley, Tata Salt, Tata Sampann, Himalayan, Eight O’Clock Coffee","Joint venture: Tata Starbucks"],
+["Tata Starbucks","Consumer and Retail",0,"Runs Starbucks cafés in India.","Starbucks India","Joint venture of Tata Consumer Products and Starbucks"],
+["Tata Chemicals","Consumer and Retail",1,"Basic chemistry and specialty products.","",""],
+["Titan Company","Consumer and Retail",1,"Jewellery, watches and eyewear.","Tanishq, Fastrack, Sonata, Titan Eye+, Taneira, CaratLane, Mia, Zoya",""],
+["Voltas","Consumer and Retail",1,"India’s largest air-conditioning company.","Voltas, Voltas Beko","Joint venture: Voltas Beko with Arçelik"],
+["Infiniti Retail","Consumer and Retail",0,"Consumer durables and electronics retailer.","Croma",""],
+["Trent","Consumer and Retail",1,"Fashion and general retail.","Westside, Zudio, Star, Landmark",""],
+["Tata Power","Infrastructure",1,"India’s largest integrated power company.","",""],
+["Tata Projects","Infrastructure",0,"Engineering, procurement and construction.","",""],
+["Tata Consulting Engineers","Infrastructure",0,"Engineering design consulting.","",""],
+["Tata Realty and Infrastructure","Infrastructure",0,"Commercial real estate.","",""],
+["Tata Housing","Infrastructure",0,"Homes from value to luxury segments.","",""],
+["Tata Capital","Financial Services",1,"Loans and financial services for individuals and companies.","",""],
+["Tata AIA Life","Financial Services",0,"Life insurance.","","Joint venture with AIA"],
+["Tata AIG","Financial Services",0,"General insurance.","","Joint venture with AIG"],
+["Tata Asset Management","Financial Services",0,"Mutual funds, portfolio management and alternative funds.","Tata Mutual Fund",""],
+["Tata Advanced Systems","Aerospace and Defence",0,"The group’s aerospace and defence company.","",""],
+["Indian Hotels Company (IHCL)","Tourism and Travel",1,"Hotels and resorts.","Taj, SeleQtions, Vivanta, Ginger",""],
+["Air India","Tourism and Travel",0,"Full-service airline.","Air India","Singapore Airlines is a minority shareholder"],
+["Air India Express","Tourism and Travel",0,"Low-cost airline.","Air India Express","Subsidiary of Air India"],
+["Tata Communications","Telecom and Media",1,"Network, cloud and digital services for businesses.","",""],
+["Tata Play","Telecom and Media",0,"Pay TV and streaming distribution.","Tata Play",""],
+["Tata Teleservices","Telecom and Media",0,"Digital and telecom services for businesses.","",""],
+["Tata International","Trading and Investments",0,"Trading, auto distribution and leather products.","",""],
+["Tata Industries","Trading and Investments",0,"Starts and nurtures new Tata businesses.","",""],
+["Tata Investment Corporation","Trading and Investments",1,"Invests in shares and securities for the long term.","",""],
+["Reliance Industries","Energy and Consumer",1,"Oil refining and petrochemicals, with large telecom and retail businesses.","Jio, JioMart, Campa","Led by Mukesh Ambani","Reliance"],
+["Jio Platforms","Telecom and Media",0,"Mobile network, broadband and digital services.","Jio, JioFiber","Subsidiary of Reliance Industries","Reliance"],
+["Reliance Retail Ventures","Consumer and Retail",0,"One of India’s largest retail networks.","Reliance Digital, Ajio, Trends, JioMart","Subsidiary of Reliance Industries","Reliance"],
+["Jio Financial Services","Financial Services",1,"Financial services arm, split off from Reliance and listed in 2023.","","Demerged from Reliance Industries","Reliance"],
+["Just Dial","Technology",1,"Local search and business listings.","Justdial","Listed Reliance group company","Reliance"],
+["Hathway Cable & Datacom","Telecom and Media",1,"Cable TV and broadband.","Hathway","Listed Reliance group company","Reliance"],
+["Den Networks","Telecom and Media",1,"Cable TV distribution.","DEN","Listed Reliance group company","Reliance"],
+["Reliance Industrial Infrastructure","Infrastructure",1,"Industrial infrastructure services.","","Listed Reliance group company","Reliance"],
+["ITC Limited","FMCG",1,"Cigarettes, packaged foods, personal care, paper and agriculture. It began as the Imperial Tobacco Company of India.","Aashirvaad, Sunfeast, Bingo!, Yippee!, Classmate, Savlon, Fiama, Gold Flake","No single promoter group. British American Tobacco is a large shareholder.","ITC"],
+["ITC Hotels","Tourism and Travel",1,"Hotels, separated from ITC and listed in January 2025.","ITC Hotels, Welcomhotel, Fortune, Storii","Demerged from ITC","ITC"],
+["Hindustan Unilever (HUL)","FMCG",1,"Soaps, detergents, personal care, foods and drinks.","Dove, Lux, Lifebuoy, Surf Excel, Rin, Wheel, Vim, Pond’s, Lakmé, Sunsilk, Brooke Bond, Bru, Kissan, Knorr, Horlicks","Indian arm of Unilever, its majority shareholder","Hindustan Unilever"]
+];
+var dq="",dsec="All",dlis="All",dgrp="All";
+var TR={"Trent":[-14.74,null,"26 Oct 2026"],"Indian Hotels Company (IHCL)":[4.72,9.95,"26 Oct 2026"],"Tata Investment Corporation":[-34.47,-14.89,"26 Oct 2026"],"Titan Company":[14.97,-10.79,"26 Oct 2026"],"Tata Power":[-13.03,null,"26 Oct 2026"],"Tata Steel":[-5.09,null,"26 Oct 2026"],"Tata Communications":[-14.78,null,"26 Oct 2026"],"Tata Consumer Products":[-17.61,null,"26 Oct 2026"],"Tata Consultancy Services (TCS)":[null,22.18,"26 Oct 2026"],"Tata Elxsi":[null,15.95,"26 Oct 2026"],"Voltas":[null,-16.34,"26 Oct 2026"],"Tata Chemicals":[null,-10.08,"26 Oct 2026"],"Reliance Industries":[-23.02,-2.03,"29 Oct 2026"],"Jio Financial Services":[-33.77,-5.7,"29 Oct 2026"],"Just Dial":[-13.33,4.03,"29 Oct 2026"],"Hathway Cable & Datacom":[-33.16,-2.53,"29 Oct 2026"],"Den Networks":[-27.37,-5.67,"29 Oct 2026"],"Reliance Industrial Infrastructure":[-26.56,-0.47,"29 Oct 2026"]};
+function trend(x){if(!x[2])return"";var t=TR[x[0]];if(!t)return '<p class="meta"><b>Price trend:</b> not added yet.</p>';var f=function(v){return v>0?"up "+v.toFixed(1)+"%":"down "+Math.abs(v).toFixed(1)+"%"},a=[];if(t[0]!=null)a.push("1 year: "+f(t[0]));if(t[1]!=null)a.push("1 month: "+f(t[1]));return '<p class="meta"><b>Price trend:</b> '+a.join("; ")+" (to "+t[2]+")</p>"}
+function renderDir(){var s=dq.toLowerCase().trim(),hits=[];
+var r=D.filter(function(x){var t=(x[0]+" "+x[1]+" "+x[3]+" "+x[4]+" "+x[5]).toLowerCase();
+if(s)x[4].split(", ").forEach(function(b){if(b&&b.toLowerCase().indexOf(s)>-1)hits.push(b+" is a brand of "+x[0])});
+return (dgrp==="All"||(x[6]||"Tata")===dgrp)&&(dsec==="All"||x[1]===dsec)&&(dlis==="All"||(dlis==="Listed")===!!x[2])&&(!s||t.indexOf(s)>-1)});
+$("dcount").textContent=r.length+" of "+D.length+" shown";
+$("dhit").innerHTML=hits.length?'<div class="hit">'+hits.slice(0,3).join(". ")+".</div>":"";
+$("dir").innerHTML=r.length?r.map(function(x){return '<div class="dc"><h4>'+x[0]+'</h4><div class="meta">'+x[1]+', '+(x[6]||"Tata")+' group</div><span class="bd '+(x[2]?'l':'u')+'">'+(x[2]?'Listed on NSE/BSE':'Not listed')+'</span><p>'+x[3]+'</p>'+trend(x)+(x[4]?'<p class="meta"><b>Brands:</b> '+x[4]+'</p>':'')+(x[5]?'<p class="meta">'+x[5]+'</p>':'')+'</div>'}).join(""):'<p class="empty">No match. Try a different name or clear the filters. This prototype shows the main group companies, not every small subsidiary.</p>'}
+var secs=["All"];D.forEach(function(x){if(secs.indexOf(x[1])<0)secs.push(x[1])});
+$("dsec").innerHTML=secs.map(function(s){return "<option>"+s+"</option>"}).join("");
+$("dq").addEventListener("input",function(e){dq=e.target.value;renderDir()});
+$("dsec").addEventListener("change",function(e){dsec=e.target.value;renderDir()});
+$("dlis").addEventListener("change",function(e){dlis=e.target.value;renderDir()});
+$("dgrp").innerHTML=["All","Tata","Reliance","ITC","Hindustan Unilever"].map(function(s){return "<option>"+s+"</option>"}).join("");
+$("dgrp").addEventListener("change",function(e){dgrp=e.target.value;renderDir()});
+renderDir();
+all();
+</script>
+</body>
+</html>
